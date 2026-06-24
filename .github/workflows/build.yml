@@ -20,4 +20,8 @@ jobs:
           distribution: temurin
           java-version: 25
 
-      - run: mvn clean package -DskipTests
+      - name: Build Application
+        run: mvn clean package -DskipTests
+
+      - name: Build Docker Image
+        run: docker build -t order-management .
