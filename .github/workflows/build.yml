@@ -29,8 +29,14 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Build Docker Image
-        run: docker build -t kundan045/order-management:latest .
+      -  name: Build Docker Image
+         run: |
+            docker build \
+            -t kundan045/order-management:latest \
+            -t kundan045/order-management:${{ github.run_number }} .
 
-      - name: Push Docker Image
+      - name: Push Latest
         run: docker push kundan045/order-management:latest
+
+      - name: Push Version Tag
+        run: docker push kundan045/order-management:${{ github.run_number }}
