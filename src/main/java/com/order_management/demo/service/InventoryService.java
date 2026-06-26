@@ -64,7 +64,7 @@ public class InventoryService {
         // TODO Auto-generated method stub
         // throw new UnsupportedOperationException("Unimplemented method 'updateInventoryItems'");
         Inventory existingInventory = inventoryRepository.findById(id).orElseThrow(() -> {
-            return new InventoryNotFoundException("Inventory not found");
+            return new InventoryNotFoundException("Inventory not found in DB!");
         });
 
         //  try {
