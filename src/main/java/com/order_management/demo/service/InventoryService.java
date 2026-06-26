@@ -90,7 +90,7 @@ public class InventoryService {
         // TODO Auto-generated method stub
         // throw new UnsupportedOperationException("Unimplemented method 'deleteInventoryItems'");
         Inventory existingInventory = inventoryRepository.findById(id).orElseThrow(() -> {
-            return new InventoryNotFoundException("Inventory not found");
+            return new InventoryNotFoundException("Inventory not found in DB!");
         });
         Product product = existingInventory.getProduct();
         if (product != null) {
