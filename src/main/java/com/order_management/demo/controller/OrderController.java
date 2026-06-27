@@ -93,7 +93,7 @@ public class OrderController {
         // throw new UnsupportedOperationException("Unimplemented method 'getOrdersByUserId'");
         User currUser=currentUserDetails.getUserDetails();
         if(currUser.getRole() == UserRole.CUSTOMER && !userId.equals(currentUserDetails.getUserDetails().getId())){
-            throw new AccessDeniedException("You cannot access another user's order");
+            throw new AccessDeniedException("You cannot access another user's order!");
         }
         if(ordersRepository.findByUserId(userId).isEmpty()){
             throw new OrderNotFoundException("Orders are not present for this user: "+ userId);
