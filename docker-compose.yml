@@ -20,6 +20,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
   redis:
     image: redis:latest
@@ -48,14 +49,6 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-
-  watchtower:
-     image: containrrr/watchtower
-     container_name: watchtower
-     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-     command: --interval 30
-     restart: unless-stopped
 
 volumes:
   postgres-data:
